@@ -12,6 +12,7 @@ public class ElevatorApp {
 		System.out.println(ele.moveUp(ele.nowFloor));
 		System.out.println(ele.moveUp(ele.nowFloor));
 		
+		Elevator ele1 = new Elevator();
 		
 	}
 }

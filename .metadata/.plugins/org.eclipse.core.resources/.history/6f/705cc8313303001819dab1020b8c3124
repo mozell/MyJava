@@ -1,0 +1,96 @@
+import java.util.Scanner;
+
+public class Elevator {
+	int[] totalFloor;
+	int nowFloor;
+
+	public Elevator(int[] totalFloor) {
+		this.totalFloor = totalFloor;
+		this.nowFloor = 1;
+	}
+	
+	public Elevator() {
+		this.setFloor();
+		this.nowFloor = 1;
+	}
+	
+	public void setFloor() {
+		int top, bottom;
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("최고층을 숫자로 입력하세요 >> ");
+		try {
+			top = Integer.parseInt(scan.next());
+			int[] ground = new int[top];
+			for(int i = 0; i < top; i++) {
+				ground[i] = i+1;
+			}
+			
+			for(int i=0;i<ground.length;i++) {
+				System.out.println(ground[i]);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.print("최저층을 숫자로 입력하세요 >> ");
+		try {
+			bottom = Integer.parseInt(scan.next());
+			int[] basement = new int[bottom];
+			for(int i = 0; i < bottom ; i++) {
+				System.out.println("bottom is "+bottom+" << ");
+				basement[i] = bottom*(-1);
+				bottom = bottom - 1;
+				System.out.print(basement[i]);
+				
+			}
+			
+			for(int i=0;i<basement.length;i++) {
+				System.out.println(basement[i]);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public int moveUp(int nowFloor) {
+		nowFloor += 1;
+		
+		if (isExistFloor(nowFloor)) {
+			this.nowFloor = nowFloor;
+			return nowFloor;
+		} else {
+			System.out.println("최고층 입니다.");
+			nowFloor -= 1;
+			return nowFloor;
+		}
+	}
+
+	public int moveDown(int nowFloor) {
+		nowFloor -= 1;
+
+		if (isExistFloor(nowFloor)) {
+			this.nowFloor = nowFloor;
+			return nowFloor;
+		} else {
+			System.out.println("최저층 입니다.");
+			nowFloor += 1;
+			return nowFloor;
+		}
+	}
+
+	public boolean isExistFloor(int nowFloor) {
+		int[] temp = this.totalFloor;
+
+		for (int i = 0; i < temp.length; i++) {
+			if (temp[i] == nowFloor) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+}

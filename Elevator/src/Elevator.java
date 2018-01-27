@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Elevator {
 	int[] totalFloor;
 	int nowFloor;
@@ -5,6 +7,73 @@ public class Elevator {
 	public Elevator(int[] totalFloor) {
 		this.totalFloor = totalFloor;
 		this.nowFloor = 1;
+	}
+	
+	public Elevator() {
+		this.setFloor();
+		this.nowFloor = 1;
+	}
+	
+	// 개발중인 메소드
+	public void setFloor() {
+		int top, bottom;
+		Scanner scan = new Scanner(System.in);
+		int[] ground = null;
+		int[] basement = null;
+		
+		System.out.print("최고층을 숫자로 입력하세요 >> ");
+		try {
+			top = Integer.parseInt(scan.next());
+			ground = new int[top];
+			for(int i = 0; i < top; i++) {
+				ground[i] = i+1;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.print("최저층을 숫자로 입력하세요 >> ");
+		try {
+			bottom = Integer.parseInt(scan.next());
+			basement = new int[bottom];
+			int temp = bottom;
+			
+			for(int i = 0; i < bottom ; i++) {
+				basement[i] = temp*(-1);
+				temp = temp - 1;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mergeFloor(ground, basement);
+	}
+	
+	// 개발중인 메소드
+	public int[] mergeFloor(int[] ground, int[] basement) {
+		int total = ground.length + basement.length;
+		int[] result = new int[total];
+		int i = 0;
+		
+		// 특히 합치는 부분...
+		for(i = 0; i < basement.length; i++) {
+			result[i] = basement[i];
+		}
+		System.out.println(i+" "+total);
+		for(int j = 0; i < total ; j++) {
+			
+			result[j] = ground[j];
+			i+=1;
+		}
+		
+		
+	
+		for(i = 0;i<total;i++) {
+			System.out.print(result[i]+", ");
+		}
+		
+		return result;
+		
 	}
 
 	public int moveUp(int nowFloor) {

@@ -1,0 +1,17 @@
+
+public class ElevatorApp {
+	public static void main(String args[]) {
+		
+		int[] building = {1,2,3,4};
+		
+		Elevator ele = new Elevator(building);
+	
+		System.out.println(ele.moveDown(ele.nowFloor));
+		System.out.println(ele.moveUp(ele.nowFloor));
+		System.out.println(ele.moveUp(ele.nowFloor));
+		System.out.println(ele.moveUp(ele.nowFloor));
+		System.out.println(ele.moveUp(ele.nowFloor));
+		
+		
+	}
+}
