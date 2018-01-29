@@ -13,7 +13,7 @@ public class Elevator {
 		int[] ground = null;
 		int[] basement = null;
 		
-		System.out.print("최고층을 숫자로 입력하세요 >> "); // 입력을 n > 0 으로만 받게 해야하고, 0 을 받으면 지상층 안만들게 해야 함.
+		System.out.print("최고층을 숫자로 입력하세요 >> ");
 		try {
 			top = Integer.parseInt(scan.next());
 			ground = new int[top];
@@ -24,7 +24,7 @@ public class Elevator {
 			e.printStackTrace();
 		}
 		
-		System.out.print("최저층을 숫자로 입력하세요 >> "); // 입력을 n < 0 으로만 받게 해야하고, 0 을 받으면 지하층 안만들게 해야 함.
+		System.out.print("최저층을 숫자로 입력하세요 >> ");
 		try {
 			bottom = Integer.parseInt(scan.next());
 			basement = new int[bottom];
@@ -38,7 +38,7 @@ public class Elevator {
 			e.printStackTrace();
 		}
 		scan.close();
-		mergeFloor(ground, basement);			// 둘다 0입력받으면 안생기게 체크해야 할듯.
+		mergeFloor(ground, basement);
 	}
 	
 	private void mergeFloor(int[] ground, int[] basement) {
@@ -60,19 +60,22 @@ public class Elevator {
 	}
 
 	public int moveUp(int currentFloor) {
-		int currentFloorIndex = checkFloorIndex(currentFloor);
-		
-		if (currentFloorIndex < this.totalFloor.length-1)
-			currentFloorIndex++;
+		int cfi;
+		cfi = checkFloorIndex(currentFloor);
+		if (cfi < this.totalFloor.length)
+			cfi++;
 		else
 			System.out.println("최고층입니다.");
 		
-		return this.totalFloor[currentFloorIndex];
+		return this.totalFloor[cfi];
 		
 	}
 	
 	public int moveDown(int currentFloor) {
-		int currentFloorIndex = checkFloorIndex(currentFloor);
+		int currentFloorIndex;
+		currentFloorIndex = checkFloorIndex(currentFloor);	// 변수에는 들어가지는데 
+//		int temp = currentFloorIndex;							// 쓰려고하면 안써짐..
+//		System.out.println(">>>"+currnetFloorIndex);			// 근데 출력은 됨..?? 뭐야이거
 		
 		if (currentFloorIndex != 0)
 			currentFloorIndex--;
@@ -92,10 +95,3 @@ public class Elevator {
 	}
 }
 
-
-/** 
-* ++ 해당 층 버튼을 누르면 층까지 운행하는 메소드
-* 
-* ++ 랜덤으로 손님을 받아서 운행...?
-*
-*/
