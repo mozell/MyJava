@@ -114,7 +114,6 @@ public class Elevator {
 		}
 	}
 	// 위아래로 움직일 때, 재귀적으로 움직이게 해야할 듯.
-	// 지하층을 입력할때 ( -1 은 입력 되는데 b1 은 입력 안됨.)
 	public void elevatorRun() {
 		System.out.print("운행층 >> "); this.printTotalFloor();
 		System.out.println("현재층 >> "+this.currentFloor);
@@ -128,11 +127,9 @@ public class Elevator {
 		}
 		else if(checkFloorIndex(selectedFloor) > this.currentFloor) {
 			moveUp(this.currentFloor);
-			System.out.println("moveUp");
 		}
 		else if(checkFloorIndex(selectedFloor) < this.currentFloor) {
 			moveDown(this.currentFloor);
-			System.out.println("moveDown");
 		}
 			
 	}

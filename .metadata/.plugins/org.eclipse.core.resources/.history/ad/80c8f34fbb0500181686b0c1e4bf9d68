@@ -43,7 +43,7 @@ public class Elevator {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+		scan.close();
 		mergeFloor(ground, basement);			// 둘다 0입력받으면 안생기게 체크해야 할듯.
 		this.currentFloor = this.totalFloor[checkFloorIndex(1)];						// 1층을 기본 층으로 ...
 	}
@@ -66,7 +66,7 @@ public class Elevator {
 		this.totalFloor = result;
 	}
 
-	private int moveUp(int currentFloor) {
+	public int moveUp(int currentFloor) {
 		int currentFloorIndex = checkFloorIndex(currentFloor);
 		
 		if (currentFloorIndex < this.totalFloor.length-1)
@@ -78,7 +78,7 @@ public class Elevator {
 		
 	}
 	
-	private int moveDown(int currentFloor) {
+	public int moveDown(int currentFloor) {
 		int currentFloorIndex = checkFloorIndex(currentFloor);
 		
 		if (currentFloorIndex != 0)
@@ -113,8 +113,7 @@ public class Elevator {
 				System.out.println("]");
 		}
 	}
-	// 위아래로 움직일 때, 재귀적으로 움직이게 해야할 듯.
-	// 지하층을 입력할때 ( -1 은 입력 되는데 b1 은 입력 안됨.)
+	
 	public void elevatorRun() {
 		System.out.print("운행층 >> "); this.printTotalFloor();
 		System.out.println("현재층 >> "+this.currentFloor);
@@ -122,19 +121,9 @@ public class Elevator {
 		System.out.print("이동할 층 >> ");
 		
 		Scanner sc = new Scanner(System.in);
-		int selectedFloor = Integer.parseInt(sc.next());
-		if(checkFloorIndex(selectedFloor) == 0 && checkFloorIndex(selectedFloor) == this.currentFloor) {
-			System.out.println("층을 잘못 입력 하였습니다.");
-		}
-		else if(checkFloorIndex(selectedFloor) > this.currentFloor) {
-			moveUp(this.currentFloor);
-			System.out.println("moveUp");
-		}
-		else if(checkFloorIndex(selectedFloor) < this.currentFloor) {
-			moveDown(this.currentFloor);
-			System.out.println("moveDown");
-		}
-			
+		int selectedFloor;
+		sc.next();
+		
 	}
 }
 
