@@ -137,7 +137,6 @@ public class Elevator {
 			for(;;) {
 				if(selectedFloor != this.currentFloor) {
 					moveUp(this.currentFloor);
-					this.currentFloor += 1;
 					System.out.println("상승중 >>"+this.currentFloor);
 				}
 				else
@@ -150,20 +149,19 @@ public class Elevator {
 			for(;;) {
 				if(selectedFloor != this.currentFloor) {
 					moveDown(this.currentFloor);
-					this.currentFloor -= 1;
 					System.out.println("하강중 >>"+this.currentFloor);
 				}
 				else
 					break;
 			}
 		}
-		else if(selectedFloor == 0) {
-			System.out.println("없어 0층은!!");
-		}
 	}
 }
 
 
 /** 
+* ++ 해당 층 버튼을 누르면 층까지 운행하는 메소드
+* 
 * ++ 랜덤으로 손님을 받아서 운행...?
+*
 */
