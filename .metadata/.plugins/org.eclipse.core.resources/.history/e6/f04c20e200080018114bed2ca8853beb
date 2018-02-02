@@ -122,37 +122,43 @@ public class Elevator {
 		System.out.print("이동할 층 >> ");
 		
 		Scanner sc = new Scanner(System.in);
+//		int selectedFloor;
+//		if(sc.nextLine() =="^[bB]\\d") {
+//			selectedFloor = 
+//		}
 		int selectedFloor = Integer.parseInt(sc.next());
 		
 		if (selectedFloor == this.currentFloor) {
 			System.out.println("현재층입니다.");
 		}
-		else if(selectedFloor == 0) {
-			System.out.println("없어 0층은!!");
-		}
-		
 		else if(selectedFloor > this.currentFloor) {
+			// 최상층인지 확인하고
+			// 목적지까지 운행해야한다.
 			for(;;) {
 				if(selectedFloor != this.currentFloor) {
-					int arrivedFloor = moveUp(this.currentFloor);
-					this.currentFloor = this.totalFloor[checkFloorIndex(arrivedFloor)];
+					moveUp(this.currentFloor);
+					this.currentFloor = this.totalFloor[checkFloorIndex(this.currentFloor)];
 					System.out.println("상승중 >>"+this.currentFloor);
 				}
 				else
 					break;
 			}
 		}
-		
 		else if(selectedFloor < this.currentFloor) {
+			// 최저층인지 확인하고
+			// 목적지까지 운행한다.
 			for(;;) {
 				if(selectedFloor != this.currentFloor) {
-					int arrivedFloor = moveDown(this.currentFloor);
-					this.currentFloor = this.totalFloor[checkFloorIndex(arrivedFloor)];
+					moveDown(this.currentFloor);
+					this.currentFloor -= 1;
 					System.out.println("하강중 >>"+this.currentFloor);
 				}
 				else
 					break;
 			}
+		}
+		else if(selectedFloor == 0) {
+			System.out.println("없어 0층은!!");
 		}
 	}
 }

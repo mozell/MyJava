@@ -122,6 +122,10 @@ public class Elevator {
 		System.out.print("ÀÌµ¿ÇÒ Ãþ >> ");
 		
 		Scanner sc = new Scanner(System.in);
+//		int selectedFloor;
+//		if(sc.nextLine() =="^[bB]\\d") {
+//			selectedFloor = 
+//		}
 		int selectedFloor = Integer.parseInt(sc.next());
 		
 		if (selectedFloor == this.currentFloor) {

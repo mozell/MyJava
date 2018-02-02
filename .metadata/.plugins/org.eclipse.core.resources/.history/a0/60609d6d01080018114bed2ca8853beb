@@ -122,13 +122,14 @@ public class Elevator {
 		System.out.print("ÀÌµ¿ÇÒ Ãþ >> ");
 		
 		Scanner sc = new Scanner(System.in);
+//		int selectedFloor;
+//		if(sc.nextLine() =="^[bB]\\d") {
+//			selectedFloor = 
+//		}
 		int selectedFloor = Integer.parseInt(sc.next());
 		
 		if (selectedFloor == this.currentFloor) {
 			System.out.println("ÇöÀçÃþÀÔ´Ï´Ù.");
-		}
-		else if(selectedFloor == 0) {
-			System.out.println("¾ø¾î 0ÃþÀº!!");
 		}
 		
 		else if(selectedFloor > this.currentFloor) {
@@ -153,6 +154,9 @@ public class Elevator {
 				else
 					break;
 			}
+		}
+		else if(selectedFloor == 0) {
+			System.out.println("¾ø¾î 0ÃþÀº!!");
 		}
 	}
 }
